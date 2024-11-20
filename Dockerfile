@@ -1,4 +1,3 @@
-
 # Étape 1 : Construction de l'application
 FROM node:20.11.0 as builder
 
@@ -26,8 +25,8 @@ COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Copier les fichiers construits dans le répertoire par défaut de Nginx
 COPY --from=builder /app/dist/pfe1/browser /usr/share/nginx/html/
 
-
 # Exposer le port 80 pour le serveur Nginx
 EXPOSE 80
+
 # Commande pour démarrer le serveur Nginx
 CMD ["nginx", "-g", "daemon off;"]
